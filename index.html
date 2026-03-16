@@ -387,6 +387,131 @@
       .nav-dots{display:none}
       .metrics-row{grid-template-columns:1fr 1fr}
     }
+
+    /* ===== EXPORT BTN ===== */
+    .btn-export{
+      flex-shrink:0;display:flex;align-items:center;gap:6px;
+      background:var(--g600);color:#fff;padding:7px 16px;border-radius:8px;
+      font-size:.78rem;font-weight:600;border:none;cursor:pointer;
+      transition:all .2s;font-family:inherit;
+    }
+    .btn-export:hover{background:var(--g700);transform:translateY(-1px);box-shadow:0 4px 12px rgba(22,163,74,.3)}
+    .btn-export svg{width:14px;height:14px}
+
+    /* ===== PRINT / PDF STYLES ===== */
+    @media print{
+      @page{size:A4 portrait;margin:12mm 14mm 12mm 14mm}
+
+      /* Hide UI elements */
+      .top-nav,.nav-dots,.slide-counter,.key-hint,.progress-bar,.btn-export{display:none!important}
+
+      /* Reset body */
+      body{background:#fff!important;color:#111!important;font-size:9pt;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+      /* Slides become pages */
+      .slide{
+        min-height:auto!important;padding:0!important;margin:0!important;
+        page-break-after:always;break-after:page;
+        display:block!important;
+      }
+      .slide:last-of-type{page-break-after:auto;break-after:auto}
+      .slide-inner{max-width:100%!important}
+
+      /* Hero adjustments */
+      .slide-hero::before,.slide-hero::after{display:none!important}
+      .hero-title{font-size:28pt!important}
+      .hero-subtitle{font-size:10pt!important}
+      .hero-badge{box-shadow:none!important}
+
+      /* Section headers */
+      .section-title{font-size:18pt!important;margin-bottom:6px!important}
+      .section-desc{font-size:9pt!important;margin-bottom:10px!important}
+
+      /* Cards — never break inside */
+      .reg-card,.metric-card,.bento-item,.step-item,.detail-card,.result-box,.consideration-item{
+        break-inside:avoid!important;page-break-inside:avoid!important;
+        box-shadow:none!important;transform:none!important;
+        border:1px solid #ddd!important;
+      }
+
+      /* Grids — tighter */
+      .metrics-row{grid-template-columns:repeat(4,1fr)!important;gap:8px!important}
+      .reg-grid{gap:10px!important}
+      .bento{grid-template-columns:repeat(4,1fr)!important;gap:8px!important}
+      .result-band{gap:8px!important}
+      .detail-cards{gap:8px!important}
+      .steps{gap:8px!important}
+
+      /* Tables — never break rows */
+      .table-pro,.monthly-wrap{border:1px solid #ccc!important;border-radius:0!important;margin-top:8px!important}
+      .table-pro table,.monthly-wrap table{font-size:7.5pt!important}
+      .table-pro thead th,.monthly-wrap thead th{font-size:6.5pt!important;padding:6px 8px!important}
+      .table-pro tbody td,.monthly-wrap tbody td{padding:5px 8px!important}
+      tbody tr{break-inside:avoid!important;page-break-inside:avoid!important}
+
+      /* Compare bars — print friendly */
+      .compare-bar-track{border:1px solid #ddd!important}
+      .compare-bar-fill{print-color-adjust:exact!important;-webkit-print-color-adjust:exact!important}
+
+      /* Backgrounds */
+      .bg-alt,.bg-green-soft{background:#fff!important}
+      .row-total td,.row-t td{background:var(--g50)!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+      .row-alert{background:#fff5f5!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+      .badge-pct,.metric-change{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+
+      /* Bento bars */
+      .bento-bar-fill{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+
+      /* Metric card numbers */
+      .metric-card .metric-value{font-size:14pt!important}
+      .bento-item .bento-number{font-size:16pt!important}
+      .result-box .result-val{font-size:14pt!important}
+
+      /* Reveal — show everything */
+      .reveal{opacity:1!important;transform:none!important;transition:none!important}
+
+      /* Footer */
+      .slide-footer{
+        page-break-after:auto!important;break-after:auto!important;
+        padding:20px!important;background:var(--g800)!important;
+        -webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;
+      }
+      .slide-footer h2{font-size:14pt!important}
+      .footer-line{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+
+      /* Blockquote */
+      blockquote{break-inside:avoid!important;page-break-inside:avoid!important}
+
+      /* Highlight pills */
+      .highlight-pill{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+
+      /* Step numbers */
+      .step-num{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;box-shadow:none!important}
+
+      /* Section tags */
+      .section-tag{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+
+      /* Hero badge */
+      .hero-badge{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+
+      /* Icon backgrounds */
+      .metric-card .metric-icon,.nav-icon,.card-icon{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+
+      /* Reg card stripe */
+      .reg-card .reg-stripe{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+
+      /* Controlled page break inside long tables */
+      .print-break{break-before:page!important;page-break-before:always!important}
+
+      /* Despesas slide — allow overflow to next page */
+      #s7{page-break-after:auto!important;break-after:auto!important;page-break-inside:auto!important}
+      #s7 .table-pro{break-inside:auto!important;page-break-inside:auto!important}
+
+      /* Monthly tables — landscape-like fit */
+      .monthly-wrap table{font-size:6.5pt!important}
+      .monthly-wrap thead th{padding:4px 5px!important;font-size:5.5pt!important}
+      .monthly-wrap tbody td{padding:4px 5px!important;font-size:6.5pt!important}
+    }
   </style>
 </head>
 <body>
@@ -410,6 +535,10 @@
     <a href="#s10" class="nav-link">Tronco</a>
     <a href="#s11" class="nav-link">Considerações</a>
   </div>
+  <button class="btn-export" onclick="window.print()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Exportar PDF
+  </button>
 </nav>
 
 <!-- PROGRESS BAR -->
@@ -717,7 +846,7 @@
           <tr><td>Beneficência Tronco</td><td>5.100,00</td><td>3.269,34</td><td class="pos">+1.830,66</td><td><span class="badge-pct up">36%</span></td></tr>
           <tr class="row-alert"><td>Despesas Diversas</td><td>1.000,00</td><td>37.701,06</td><td class="neg"><strong>-36.701,06</strong></td><td><span class="badge-pct down">-3670%</span></td></tr>
           <tr><td>Impostos e Taxas</td><td>0,00</td><td>0,00</td><td>0,00</td><td>—</td></tr>
-          <tr><td>Despesas Quartas Feiras</td><td>12.240,00</td><td>16.049,73</td><td class="neg">-3.809,73</td><td><span class="badge-pct down">-31%</span></td></tr>
+          <tr class="print-break"><td>Despesas Quartas Feiras</td><td>12.240,00</td><td>16.049,73</td><td class="neg">-3.809,73</td><td><span class="badge-pct down">-31%</span></td></tr>
           <tr><td>Despesas Iniciação</td><td>4.500,00</td><td>12.135,94</td><td class="neg">-7.635,94</td><td><span class="badge-pct down">-170%</span></td></tr>
           <tr><td>Desp. Dia das Mães + LM</td><td>4.550,00</td><td>2.364,50</td><td class="pos">+2.185,50</td><td><span class="badge-pct up">48%</span></td></tr>
           <tr><td>Desp. Jantar Ritualístico</td><td>5.300,00</td><td>10.615,33</td><td class="neg">-5.315,33</td><td><span class="badge-pct down">-100%</span></td></tr>
